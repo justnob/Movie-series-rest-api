@@ -1,5 +1,7 @@
 package com.amarnath.movie.dto;
 
+import com.amarnath.movie.entity.Rate;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 import java.util.Date;
@@ -21,7 +23,7 @@ public class MovieDTO {
 
 	private Date endDate;
 
-	private float rating;
+	private Rate rating;
 
 
 }

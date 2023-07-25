@@ -32,6 +32,8 @@ public class Movie {
 
 	private Date endDate;
 
-	private float rating;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "rate_id")
+	private Rate rating;
 	
 }
