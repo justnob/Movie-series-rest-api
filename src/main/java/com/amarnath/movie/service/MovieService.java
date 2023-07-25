@@ -11,4 +11,12 @@ public interface MovieService {
 
 	MovieDTO createAMovie(MovieDTO movieDto);
 
+	MovieDTO getMovieById(int id);
+
+	MovieDTO updateMovieById(int id, MovieDTO movieDTO);
+
+	List<MovieDTO> getMovieByName(String name);
+
+	String deleteMovieById(int id);
+
 }

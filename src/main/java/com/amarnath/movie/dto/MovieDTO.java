@@ -1,8 +1,8 @@
 package com.amarnath.movie.dto;
 
-import java.util.Date;
-
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class MovieDTO {
@@ -10,6 +10,8 @@ public class MovieDTO {
 	private String id;
 
 	private String name;
+
+	private String imageUrl;
 
 	private String description;
 
@@ -19,6 +21,7 @@ public class MovieDTO {
 
 	private Date endDate;
 
-	private byte rating;
+	private float rating;
+
 
 }
