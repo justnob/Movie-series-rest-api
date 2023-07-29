@@ -14,7 +14,7 @@ import com.amarnath.movie.service.impl.MovieServiceImpl;
 @RestController
 public class MovieController {
 	
-	private  MovieServiceImpl movieServiceImpl;
+	private final MovieServiceImpl movieServiceImpl;
 	
 	@Autowired
 	public MovieController(MovieServiceImpl movieServiceImpl) {

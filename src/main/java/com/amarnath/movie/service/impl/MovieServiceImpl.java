@@ -4,7 +4,6 @@ import com.amarnath.movie.dto.MovieDTO;
 import com.amarnath.movie.entity.Movie;
 import com.amarnath.movie.errorhandeling.ApplicationException;
 import com.amarnath.movie.repository.MovieRepository;
-import com.amarnath.movie.repository.RatingRepository;
 import com.amarnath.movie.service.MovieService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +20,11 @@ public class MovieServiceImpl implements MovieService {
 	private final MovieRepository movieRepository;
 	private final ModelMapper mapper;
 
-	private final RatingRepository ratingRepository;
-
 	@Autowired
-	public MovieServiceImpl(MovieRepository movieRepository, ModelMapper mapper, RatingRepository ratingRepository) {
+	public MovieServiceImpl(MovieRepository movieRepository, ModelMapper mapper) {
 		super();
 		this.movieRepository = movieRepository;
 		this.mapper = mapper;
-		this.ratingRepository = ratingRepository;
 	}
 
 	@Override
@@ -85,9 +81,6 @@ public class MovieServiceImpl implements MovieService {
 		movieById.setDescription(movieDTO.getDescription());
 		movieById.setImageUrl(movieDTO.getImageUrl());
 		movieById.setNumberOfEpisodes(movieDTO.getNumberOfEpisodes());
-		movieById.setAirDate(movieDTO.getAirDate());
-		movieById.setEndDate(movieDTO.getEndDate());
-		movieById.setRating(ratingRepository.save(movieDTO.getRating()));
 
 		Movie savedResponse = movieRepository.save(movieById);
 

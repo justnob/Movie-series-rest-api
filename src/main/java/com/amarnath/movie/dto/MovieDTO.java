@@ -1,10 +1,9 @@
 package com.amarnath.movie.dto;
 
-import com.amarnath.movie.entity.Rate;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class MovieDTO {
@@ -19,11 +18,13 @@ public class MovieDTO {
 
 	private int numberOfEpisodes;
 
-	private Date airDate;
+	private AiredDTO aired;
 
-	private Date endDate;
+	private RateDTO rating;
 
-	private Rate rating;
+	private List<GenreDTO> genres = new ArrayList<>();
+
+	private List<TrailerDTO> trailers = new ArrayList<>();
 
 
 }

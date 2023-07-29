@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.util.*;
 
 @Getter
 @Setter
@@ -28,12 +28,18 @@ public class Movie {
 
 	private int numberOfEpisodes;
 
-	private Date airDate;
-
-	private Date endDate;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "aired_id")
+	private Aired aired;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "rate_id")
 	private Rate rating;
+
+	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+	private List<Genre> genres = new ArrayList<>();
+
+	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+	private List<Trailer> trailers = new ArrayList<>();
 	
 }

@@ -12,15 +12,16 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-public class Rate {
+public class Trailer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private float rating;
 
-    @OneToOne(mappedBy = "rating")
+    private String videoLink;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
     private Movie movie;
-
 
 }

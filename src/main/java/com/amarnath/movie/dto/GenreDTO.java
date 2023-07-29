@@ -3,9 +3,9 @@ package com.amarnath.movie.dto;
 import lombok.Data;
 
 @Data
-public class RateDTO {
+public class GenreDTO {
 
     private long id;
-    private float rating;
+    private String genreName;
 
 }
