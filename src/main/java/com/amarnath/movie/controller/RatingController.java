@@ -1,6 +1,7 @@
 package com.amarnath.movie.controller;
 
 import com.amarnath.movie.dto.RateDTO;
+import com.amarnath.movie.service.RatingService;
 import com.amarnath.movie.service.impl.RatingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class RatingController {
 
-    private final RatingServiceImpl ratingService;
+    private final RatingService ratingService;
 
     @Autowired
-    public RatingController(RatingServiceImpl ratingService) {
+    public RatingController(RatingService ratingService) {
         this.ratingService = ratingService;
     }
 
@@ -28,13 +29,12 @@ public class RatingController {
 
     }
 
-    @GetMapping("/api/v1/movies/{movieId}/rating/{ratingId}")
+    @GetMapping("/api/v1/movies/{movieId}/rating")
     private ResponseEntity<RateDTO> getRatingByMovieById(
-            @PathVariable long movieId,
-            @PathVariable long ratingId
+            @PathVariable long movieId
     ){
 
-        return new ResponseEntity<>(ratingService.getRatingByMovieById(movieId, ratingId), HttpStatus.OK);
+        return new ResponseEntity<>(ratingService.getRatingByMovieId(movieId), HttpStatus.OK);
 
     }
 

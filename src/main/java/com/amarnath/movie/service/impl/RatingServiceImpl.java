@@ -71,7 +71,7 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public RateDTO getRatingByMovieById(long movieId, long ratingId) {
+    public RateDTO getRatingByMovieId(long movieId) {
 
         List<Movie> movieEntityResponse = movieRepository.findAll();
 
@@ -83,24 +83,14 @@ public class RatingServiceImpl implements RatingService {
                         HttpStatus.NOT_FOUND
                 ));
 
-        if(movieById.getRating().getId() != ratingId){
-
-            throw new ApplicationException(
-                    "The rating id is not assigned to this movie",
-                    String.format("The rating id=%d does not exist for this movie", ratingId),
-                    HttpStatus.NOT_FOUND
-            );
-
-        }
-
-
-
-        return mapToDTO(ratingRepository.findById(ratingId).orElseThrow(() ->
+        return mapToDTO(ratingRepository.findById(movieById.getRating().getId()).orElseThrow(() ->
                 new ApplicationException(
-                        "The Rating can't be found",
-                        String.format("Can't find the value to the rating id=%d", ratingId),
+                        "Rating-Can-Not-Found",
+                        String.format("Can't find movie or series with id=%d", movieId),
                         HttpStatus.NOT_FOUND
-                )));
+                )
+                ));
+
     }
 
     @Override
